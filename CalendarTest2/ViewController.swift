@@ -22,6 +22,14 @@ class ViewController: UIViewController {
         calendarView.minimumLineSpacing = 0
         calendarView.minimumInteritemSpacing = 0
     }
+    func handleCellTextColor(view: JTAppleCell?,cellState: CellState){
+        guard let validCell = view as? CustomCell else {return}
+        if cellState.isSelected {
+            validCell.selectedView.isHidden = false
+        }else{
+            validCell.selectedView.isHidden = true
+        }
+    }
 }
 
 extension ViewController: JTAppleCalendarViewDataSource{
@@ -55,17 +63,28 @@ extension ViewController: JTAppleCalendarViewDelegate{
         cell.layer.cornerRadius = 7
         cell.layer.borderWidth = 0
         
-        if cellState.isSelected {
-            cell.selectedView.isHidden = false
-        }else{
-            cell.selectedView.isHidden = true
-        }
+        handleCellTextColor(view: cell,cellState: cellState)
         return cell
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
-        guard let validCell = cell as? CustomCell else {return}
-        validCell.selectedView.isHidden = false
+        handleCellTextColor(view: cell,cellState: cellState)
     }
     
+    func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
+        handleCellTextColor(view: cell,cellState: cellState)
+    }
+    
+}
+
+
+extension UIColor{
+    convenience init(colorWithHexValue value: Int, alpha: CGFloat = 1.0){
+        self.init(
+            red: CGFloat((value & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((value & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(value & 0x0000FF) / 255.0,
+                          alpha: alpha
+        )
+    }
 }
