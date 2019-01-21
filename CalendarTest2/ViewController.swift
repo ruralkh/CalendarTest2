@@ -11,10 +11,10 @@ import JTAppleCalendar
 
 class ViewController: UIViewController {
 let formatter = DateFormatter()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
     }
 
 }
@@ -46,6 +46,9 @@ extension ViewController: JTAppleCalendarViewDelegate{
     func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
         let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "CustomCell", for: indexPath) as! CustomCell
         cell.dateLabel.text = cellState.text
+        
+        cell.layer.cornerRadius = 7
+        cell.layer.borderWidth = 0
         return cell
     }
     

@@ -96,7 +96,7 @@
                                                         <constraint firstAttribute="height" constant="40" id="HQf-rs-5Ek"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.corner.Radius">
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                             <integer key="value" value="20"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
@@ -115,6 +115,11 @@
                                             <constraint firstItem="TXb-Mr-Eds" firstAttribute="centerX" secondItem="kWF-KM-2N4" secondAttribute="centerX" id="azy-4f-8vg"/>
                                             <constraint firstItem="3FC-zl-mPf" firstAttribute="centerY" secondItem="kWF-KM-2N4" secondAttribute="centerY" id="vm2-hI-8Q2"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="dateLabel" destination="3FC-zl-mPf" id="kb4-43-lLS"/>
                                             <outlet property="selectedView" destination="TXb-Mr-Eds" id="oG2-f6-ENg"/>
