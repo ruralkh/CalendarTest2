@@ -10,13 +10,18 @@ import UIKit
 import JTAppleCalendar
 
 class ViewController: UIViewController {
-let formatter = DateFormatter()
+    let formatter = DateFormatter()
 
+    @IBOutlet weak var calendarView: JTAppleCalendarView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupCalendarView()
     }
-
+    func setupCalendarView(){
+        calendarView.minimumLineSpacing = 0
+        calendarView.minimumInteritemSpacing = 0
+    }
 }
 
 extension ViewController: JTAppleCalendarViewDataSource{
@@ -49,6 +54,7 @@ extension ViewController: JTAppleCalendarViewDelegate{
         
         cell.layer.cornerRadius = 7
         cell.layer.borderWidth = 0
+        
         return cell
     }
     
