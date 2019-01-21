@@ -47,7 +47,7 @@ extension ViewController: JTAppleCalendarViewDelegate{
         
     }
     
-    
+    // display the cell
     func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
         let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "CustomCell", for: indexPath) as! CustomCell
         cell.dateLabel.text = cellState.text
@@ -55,6 +55,11 @@ extension ViewController: JTAppleCalendarViewDelegate{
         cell.layer.cornerRadius = 7
         cell.layer.borderWidth = 0
         
+        if cellState.isSelected {
+            cell.selectedView.isHidden = false
+        }else{
+            cell.selectedView.isHidden = true
+        }
         return cell
     }
     
