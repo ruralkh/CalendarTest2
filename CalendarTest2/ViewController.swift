@@ -19,17 +19,8 @@ let formatter = DateFormatter()
 
 }
 
-extension ViewController: JTAppleCalendarViewDelegate,JTAppleCalendarViewDataSource{
-    func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
-        
-    }
+extension ViewController: JTAppleCalendarViewDataSource{
     
-    
-    func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
-        let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "CustomCell", for: indexPath) as! CustomCell
-        cell.dateLabel.text = cellState.text
-        return cell
-    }
     
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
         formatter.dateFormat = "yyyy MM dd"
@@ -46,3 +37,16 @@ extension ViewController: JTAppleCalendarViewDelegate,JTAppleCalendarViewDataSou
     
 }
 
+extension ViewController: JTAppleCalendarViewDelegate{
+    func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
+        
+    }
+    
+    
+    func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
+        let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "CustomCell", for: indexPath) as! CustomCell
+        cell.dateLabel.text = cellState.text
+        return cell
+    }
+    
+}

@@ -88,6 +88,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="104" height="94"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TXb-Mr-Eds">
+                                                    <rect key="frame" x="32" y="27" width="40" height="40"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.98106676339999999" blue="0.57369142770000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="8lW-rx-Mfi"/>
+                                                        <constraint firstAttribute="height" constant="40" id="HQf-rs-5Ek"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.corner.Radius">
+                                                            <integer key="value" value="20"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3FC-zl-mPf">
                                                     <rect key="frame" x="31" y="36.5" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -97,7 +110,9 @@
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstItem="TXb-Mr-Eds" firstAttribute="centerY" secondItem="kWF-KM-2N4" secondAttribute="centerY" id="12Z-eU-H1K"/>
                                             <constraint firstItem="3FC-zl-mPf" firstAttribute="centerX" secondItem="kWF-KM-2N4" secondAttribute="centerX" id="9n9-wP-mbD"/>
+                                            <constraint firstItem="TXb-Mr-Eds" firstAttribute="centerX" secondItem="kWF-KM-2N4" secondAttribute="centerX" id="azy-4f-8vg"/>
                                             <constraint firstItem="3FC-zl-mPf" firstAttribute="centerY" secondItem="kWF-KM-2N4" secondAttribute="centerY" id="vm2-hI-8Q2"/>
                                         </constraints>
                                         <connections>
