@@ -117,6 +117,7 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="dateLabel" destination="3FC-zl-mPf" id="kb4-43-lLS"/>
+                                            <outlet property="selectedView" destination="TXb-Mr-Eds" id="oG2-f6-ENg"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
