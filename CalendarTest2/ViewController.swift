@@ -85,10 +85,12 @@ extension ViewController: JTAppleCalendarViewDelegate{
     
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         handleCellSelected(view: cell,cellState: cellState)
+         handleCellTextColor(view: cell,cellState: cellState)
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         handleCellSelected(view: cell,cellState: cellState)
+         handleCellTextColor(view: cell,cellState: cellState)
     }
     
 }
