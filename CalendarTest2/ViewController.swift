@@ -13,6 +13,9 @@ class ViewController: UIViewController {
     let formatter = DateFormatter()
 
     @IBOutlet weak var calendarView: JTAppleCalendarView!
+    @IBOutlet weak var year: UILabel!
+    @IBOutlet weak var month: UILabel!
+    
     let outsideMonthColor = UIColor(colorWithHexValue: 0x584a66)
     let monthColor = UIColor.white
     let selectedMonthColor = UIColor(colorWithHexValue: 0x3a294b)
@@ -24,8 +27,11 @@ class ViewController: UIViewController {
         setupCalendarView()
     }
     func setupCalendarView(){
+        //setup calendar spacing
         calendarView.minimumLineSpacing = 0
         calendarView.minimumInteritemSpacing = 0
+        //setup labels
+        
     }
     func handleCellSelected(view: JTAppleCell?,cellState: CellState){
         guard let validCell = view as? CustomCell else {return}
@@ -85,12 +91,21 @@ extension ViewController: JTAppleCalendarViewDelegate{
     
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         handleCellSelected(view: cell,cellState: cellState)
-         handleCellTextColor(view: cell,cellState: cellState)
+        handleCellTextColor(view: cell,cellState: cellState)
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         handleCellSelected(view: cell,cellState: cellState)
-         handleCellTextColor(view: cell,cellState: cellState)
+        handleCellTextColor(view: cell,cellState: cellState)
+    }
+    func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
+        let date = visibleDates.monthDates.first!.date
+        
+        formatter.dateFormat = "yyyy"
+        year.text = formatter.string(from: date)
+        
+        formatter.dateFormat = "MMMM"
+        month.text = formatter.string(from: date)
     }
     
 }
