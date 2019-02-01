@@ -30,7 +30,11 @@ class ViewController: UIViewController {
         //setup calendar spacing
         calendarView.minimumLineSpacing = 0
         calendarView.minimumInteritemSpacing = 0
+        
         //setup labels
+        calendarView.visibleDates{ visibleDates in
+            self.setUpViewOfCalendar(from: visibleDates)
+        }
         
     }
     func handleCellSelected(view: JTAppleCell?,cellState: CellState){
@@ -52,6 +56,16 @@ class ViewController: UIViewController {
                 validCell.dateLabel.textColor = outsideMonthColor
             }
         }
+    }
+    
+    func setUpViewOfCalendar(from visibleDates: DateSegmentInfo){
+        let date = visibleDates.monthDates.first!.date
+        
+        self.formatter.dateFormat = "yyyy"
+        self.year.text = self.formatter.string(from: date)
+        
+        self.formatter.dateFormat = "MMMM"
+        self.month.text = self.formatter.string(from: date)
     }
 }
 
@@ -99,13 +113,7 @@ extension ViewController: JTAppleCalendarViewDelegate{
         handleCellTextColor(view: cell,cellState: cellState)
     }
     func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
-        let date = visibleDates.monthDates.first!.date
-        
-        formatter.dateFormat = "yyyy"
-        year.text = formatter.string(from: date)
-        
-        formatter.dateFormat = "MMMM"
-        month.text = formatter.string(from: date)
+        self.setUpViewOfCalendar(from: visibleDates)
     }
     
 }
