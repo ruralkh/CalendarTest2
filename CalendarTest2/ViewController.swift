@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var year: UILabel!
     @IBOutlet weak var month: UILabel!
+    var cellDisplayDay: CustomCell!
     
     let outsideMonthColor = UIColor(colorWithHexValue: 0x584a66)
     let monthColor = UIColor.white
@@ -35,7 +36,6 @@ class ViewController: UIViewController {
         calendarView.visibleDates{ visibleDates in
             self.setUpViewOfCalendar(from: visibleDates)
         }
-        
     }
     func handleCellSelected(view: JTAppleCell?,cellState: CellState){
         guard let validCell = view as? CustomCell else {return}
@@ -66,6 +66,7 @@ class ViewController: UIViewController {
         
         self.formatter.dateFormat = "MMMM"
         self.month.text = self.formatter.string(from: date)
+        print("setUpViewOfCalendar self.month.text... \(self.month.text!)")
     }
 }
 
@@ -94,6 +95,19 @@ extension ViewController: JTAppleCalendarViewDelegate{
     func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
         let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "CustomCell", for: indexPath) as! CustomCell
         cell.dateLabel.text = cellState.text
+        
+        if self.month.text! == "month"{
+            self.month.text = "January"
+        }
+        if cell.dateLabel.text == "5" {
+            cell.buddaUIImageView.isHidden = false
+        }
+        else{
+            cell.buddaUIImageView.isHidden = true
+        }
+        
+        print("self.month.text... \(self.month.text!)")
+        
         
         cell.layer.cornerRadius = 7
         cell.layer.borderWidth = 0
