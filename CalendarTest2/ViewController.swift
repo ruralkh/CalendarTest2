@@ -82,8 +82,6 @@ extension ViewController: JTAppleCalendarViewDataSource{
         let parameters = ConfigurationParameters(startDate: startDate, endDate: endDate)
         return parameters
     }
-    
-    
 }
 
 extension ViewController: JTAppleCalendarViewDelegate{
@@ -96,18 +94,14 @@ extension ViewController: JTAppleCalendarViewDelegate{
         let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "CustomCell", for: indexPath) as! CustomCell
         cell.dateLabel.text = cellState.text
         
-        if self.month.text! == "month"{
-            self.month.text = "January"
-        }
+        
         if cell.dateLabel.text == "5" {
             cell.buddaUIImageView.isHidden = false
-        }
-        else{
+        }else{
             cell.buddaUIImageView.isHidden = true
         }
         
         print("self.month.text... \(self.month.text!)")
-        
         
         cell.layer.cornerRadius = 7
         cell.layer.borderWidth = 0
@@ -128,6 +122,16 @@ extension ViewController: JTAppleCalendarViewDelegate{
     }
     func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
         self.setUpViewOfCalendar(from: visibleDates)
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        print("first self.month.text.. "+self.month.text!)
+//        if self.month.text?.elementsEqual("month") == true{
+//            self.month.text = "January"
+//        }
+//        self.month.text = "January"
+        print("ViewWill..")
+        print("self.month.text.. "+self.month.text!)
     }
     
 }
